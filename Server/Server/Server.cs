@@ -10,7 +10,7 @@ namespace Server
 {
     class Server
     {
-        private IPAddress address = IPAddress.Parse("127.0.0.1");
+        private IPAddress address = IPAddress.Parse("127.0.0.12");
         private const int PORT_NUMBER = 2222;
         public List<Client> client_list
         {

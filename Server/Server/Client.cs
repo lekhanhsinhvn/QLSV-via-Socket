@@ -40,12 +40,17 @@ namespace Server
             while ((str=reader.ReadLine())!=null)
             {
                 string[] data = Regex.Split(str, "#@#");
-                if (data[0].Equals(" "))
+                if (data[0].Equals("Sign"))
+                {
+
+                }
+                else if (data[0].Equals("Login"))
                 {
 
                 }
             }
         }
+
         public void Clientclose()
         {
             socket.Close();

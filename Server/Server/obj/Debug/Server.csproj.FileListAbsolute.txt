@@ -1,0 +1,9 @@
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\bin\Debug\Server.exe.config
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\bin\Debug\Server.exe
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\bin\Debug\Server.pdb
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.csproj.GenerateResource.cache
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.exe
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.pdb
