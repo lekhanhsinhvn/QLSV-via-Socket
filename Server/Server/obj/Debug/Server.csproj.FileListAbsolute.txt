@@ -7,3 +7,5 @@ C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.cs
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.exe
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.pdb
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.AddressGUI.resources
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.GUI.resources

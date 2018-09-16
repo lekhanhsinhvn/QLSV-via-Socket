@@ -5,32 +5,53 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace Server
 {
-    class Server
+    public class Server
     {
-        private IPAddress address = IPAddress.Parse("127.0.0.12");
-        private const int PORT_NUMBER = 2222;
+        private IPAddress address = IPAddress.Parse("127.0.0.1");
+        private int PORT_NUMBER = 2222;
+        TcpListener listener;
         public List<Client> client_list
         {
             get;
             set;
         }
 
-        public void ServerStart()
+        public void ServerStart(IPAddress address, int PORT_NUMBER)
         {
             client_list = new List<Client>();
-            TcpListener listener = new TcpListener(address, PORT_NUMBER);
+            listener = new TcpListener(address, PORT_NUMBER);
             listener.Start();
             Console.WriteLine("Server started on " + listener.LocalEndpoint);
-            while (true)
+            Thread t = new Thread(() => Connecthanle());
+            t.Start();
+            
+        }
+
+        public void ServerStop()
+        {
+            listener.Stop();
+        }
+
+        public void Connecthanle()
+        {
+            try
             {
-                Console.WriteLine("Waiting for a connection...");
-                Socket socket = listener.AcceptSocket();
-                Console.WriteLine("Connection received from " + socket.RemoteEndPoint);
-                Client client = new Client(socket);
-                client_list.Add(client);
+                while (true)
+                {
+                    Console.WriteLine("Waiting for a connection...");
+                    Socket socket = listener.AcceptSocket();
+                    Console.WriteLine("Connection received from " + socket.RemoteEndPoint);
+                    Client client = new Client(socket);
+                    client_list.Add(client);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
             
         }

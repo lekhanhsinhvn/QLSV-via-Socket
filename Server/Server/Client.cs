@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 
 namespace Server
 {
-    class Client
+    public class Client
     {
         private NetworkStream stream;
         private StreamReader reader;
@@ -30,25 +30,33 @@ namespace Server
             reader = new StreamReader(stream);
             writer = new StreamWriter(stream);
             writer.AutoFlush=true;
-            Thread t3 = new Thread(() => Readhanle());
-            t3.Start();
+            Thread t = new Thread(() => Readhanle());
+            t.Start();
             
         }
         public void Readhanle()
         {
             string str;
-            while ((str=reader.ReadLine())!=null)
+            try
             {
-                string[] data = Regex.Split(str, "#@#");
-                if (data[0].Equals("Sign"))
+                while ((str=reader.ReadLine())!=null)
                 {
+                    string[] data = Regex.Split(str, "#@#");
+                    if (data[0].Equals("Sign"))
+                    {
 
-                }
-                else if (data[0].Equals("Login"))
-                {
-
+                    }
+                    else if (data[0].Equals("Login"))
+                    {
+                        writer.WriteLine("LoginSuccess");
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
         }
 
         public void Clientclose()
