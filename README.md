@@ -19,10 +19,10 @@ Khoahoc:
 	float chuyen_can
 	float giua_ki
 	float cuoi_ki
-	bool dang_ky
+	string trang_thai
 	int max_danhsach 
 	datetime batdau_dangky
-	datetime han_dangky
+	datetime bat dau_hoc
 
 Form: 
 	Server:

@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Server
 {
@@ -16,6 +17,9 @@ namespace Server
         private NetworkStream stream;
         private StreamReader reader;
         private StreamWriter writer;
+        private List<Khoahoc> khoahoc_list;
+        private List<Sinhvien> sinhvien_list;
+        private BinaryFormatter bf = new BinaryFormatter();
         public Socket socket
         {
             get;
@@ -42,13 +46,18 @@ namespace Server
                 while ((str=reader.ReadLine())!=null)
                 {
                     string[] data = Regex.Split(str, "#@#");
-                    if (data[0].Equals("Sign"))
+                    if (data[0].Equals("Timkiem"))
                     {
 
+                    }
+                    else if (data[0].Equals("Dangky"))
+                    {
+                        
                     }
                     else if (data[0].Equals("Login"))
                     {
                         writer.WriteLine("LoginSuccess");
+                        bf.Serialize(stream, khoahoc_list);
                     }
                 }
             }
@@ -63,5 +72,6 @@ namespace Server
         {
             socket.Close();
         }
+
     }
 }
