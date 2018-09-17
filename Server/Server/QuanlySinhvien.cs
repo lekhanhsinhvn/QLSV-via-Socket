@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    class QuanlyKhoahoc
+    class QuanlySinhvien
     {
         private List<Sinhvien> sinhvien_list;
         private List<Khoahoc> khoahoc_list;
-        public QuanlyKhoahoc()
+        public QuanlySinhvien()
         {
 
         }
-        
-        public void addKhoahoc(Khoahoc kh)
+
+        public void addSinhvien(Sinhvien sv)
         {
-            khoahoc_list.Add(kh);
+            sinhvien_list.Add(sv);
 
         }
     }

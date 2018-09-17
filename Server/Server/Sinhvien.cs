@@ -24,45 +24,54 @@ namespace Server
             get;
             set;
         }
-        public float chuyen_can
+        public bool gioi_tinh
         {
             get;
             set;
         }
-        public float giua_ki
+        public int sdt
         {
             get;
             set;
         }
-        public float cuoi_ki
+        public string diachi
         {
             get;
             set;
         }
-        public float trung_binh
+        public DateTime ngay_sinh
         {
             get;
             set;
         }
-        public string trang_thai
+        public List<Khoahoc> dang_hoc
         {
             get;
             set;
         }
-        public int max_danhsach
+        public List<Khoahoc> dang_ki
         {
             get;
             set;
         }
-        public DateTime batdau_dangky
+        public List<Khoahoc> da_hoc
         {
             get;
             set;
         }
-        public DateTime batdau_hoc
+
+        public Sinhvien(int id, string ten, string password, bool gioi_tinh, int sdt, string diachi, DateTime ngay_sinh, List<Khoahoc> dang_hoc, List<Khoahoc> dang_ki, List<Khoahoc> da_hoc)
         {
-            get;
-            set;
+            this.id = id;
+            this.ten = ten;
+            this.password = password;
+            this.gioi_tinh = gioi_tinh;
+            this.sdt = sdt;
+            this.diachi = diachi;
+            this.ngay_sinh = ngay_sinh;
+            this.dang_hoc = dang_hoc;
+            this.dang_ki = dang_ki;
+            this.da_hoc = da_hoc;
         }
     }
 }
