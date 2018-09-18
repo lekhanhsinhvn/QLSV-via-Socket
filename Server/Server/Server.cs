@@ -13,7 +13,8 @@ namespace Server
     {
         private IPAddress address = IPAddress.Parse("127.0.0.1");
         private int PORT_NUMBER = 2222;
-        TcpListener listener;
+        private TcpListener listener;
+        
         public List<Client> client_list
         {
             get;
