@@ -53,6 +53,7 @@
       <DependentUpon>AddressGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
+    <Compile Include="Diem.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
     </Compile>

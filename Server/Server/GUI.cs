@@ -14,13 +14,16 @@ namespace Server
     {
         private Server server;
         private SQL sql = new SQL();
+        string bang;
+        public List<Sinhvien> sinhvien_list;
+        public List<Khoahoc> khoahoc_list;
         public GUI()
         {
-            sql.updatelist();
             server = new Server();
             InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(GUI_FormClosing);
-            dataGridView1.DataSource = ConvertToDataTable(sql.khoahoc_list);
+            dgv_main.DataSource = ConvertToDataTable(sql.SearchKhoahoc(""));
+            bang = "Khoahoc";
         }
 
         private void addressToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,9 +66,20 @@ namespace Server
             PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
             DataTable table = new DataTable();
             foreach (PropertyDescriptor prop in properties)
-                if (!prop.Name.Equals("password"))
+                if (!prop.Name.Equals("password") && !prop.Name.Equals("danh_sach") && !prop.Name.Equals("dang_hoc") && !prop.Name.Equals("dang_ki") && !prop.Name.Equals("da_hoc"))
                 {
-                    table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                    if (typeof(T).IsValueType is Diem)
+                    {
+                        if (!prop.Name.Equals("idsinhvien") && !prop.Name.Equals("idkhoahoc"))
+                        {
+                            table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                        }
+                    }
+                    else
+                    {
+                        table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+                    }
+                    
                 }
             foreach (T item in data)
             {
@@ -78,28 +92,80 @@ namespace Server
 
         }
 
-        private void khoaHocToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            sql.updatelist();
-            dataGridView1.DataSource = ConvertToDataTable(sql.khoahoc_list);
-            
-        }
-
-        private void sinhVienToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            sql.updatelist();
-            dataGridView1.DataSource = ConvertToDataTable(sql.sinhvien_list);
-            
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void b_add_Click(object sender, EventArgs e)
         {
+            if (bang.Equals("Khoahoc"))
+            {
 
+            }
+            else if (bang.Equals("Sinhvien"))
+            {
+
+            }
+            else if (bang.Equals("Diem"))
+            {
+
+            }
+        }
+
+        private void rb_khoahoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_khoahoc.Checked)
+            {
+                bang = "Khoahoc";
+                khoahoc_list = sql.SearchKhoahoc(tb_search.Text);
+                dgv_main.DataSource = ConvertToDataTable(khoahoc_list);
+            }
+            
+           
+        }
+
+        private void rb_sinhvien_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_sinhvien.Checked)
+            {
+                bang = "Sinhvien";
+                sinhvien_list = sql.SearchSinhvien(tb_search.Text);
+                dgv_main.DataSource = ConvertToDataTable(sinhvien_list);
+            }
+        }
+
+        private void b_search_Click(object sender, EventArgs e)
+        {
+            if (bang.Equals("Sinhvien"))
+            {
+                dgv_main.DataSource = ConvertToDataTable(sql.SearchSinhvien(tb_search.Text));
+            }
+            else if(bang.Equals("Khoahoc"))
+            {
+                dgv_main.DataSource = ConvertToDataTable(sql.SearchKhoahoc(tb_search.Text));
+            }
+        }
+
+        private void dgv_main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv_main.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgv_main.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgv_main.Rows[selectedrowindex];
+
+                string a = Convert.ToString(selectedRow.Cells["id"].Value);
+                if (bang.Equals("Khoahoc"))
+                {
+                    rb_sinhvien.Checked = true;
+                    bang="Sinhvien";
+                    foreach (Khoahoc kh in khoahoc_list)
+                    {
+                        if (kh.id == int.Parse(a))
+                        {
+                            ConvertToDataTable(kh.danh_sach);
+                        }
+                    }
+                   
+                }
+
+            }
         }
     }
 }
