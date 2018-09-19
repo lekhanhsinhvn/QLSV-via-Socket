@@ -37,8 +37,16 @@
             this.b_search = new System.Windows.Forms.Button();
             this.rb_khoahoc = new System.Windows.Forms.RadioButton();
             this.rb_sinhvien = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rb_danghoc = new System.Windows.Forms.RadioButton();
+            this.rb_dahoc = new System.Windows.Forms.RadioButton();
+            this.rb_dangky = new System.Windows.Forms.RadioButton();
+            this.b_del = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_main
@@ -81,7 +89,7 @@
             // b_add
             // 
             this.b_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.b_add.Location = new System.Drawing.Point(768, 56);
+            this.b_add.Location = new System.Drawing.Point(768, 259);
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(104, 42);
             this.b_add.TabIndex = 2;
@@ -91,9 +99,9 @@
             // 
             // tb_search
             // 
-            this.tb_search.Location = new System.Drawing.Point(406, 27);
+            this.tb_search.Location = new System.Drawing.Point(432, 27);
             this.tb_search.Name = "tb_search";
-            this.tb_search.Size = new System.Drawing.Size(356, 20);
+            this.tb_search.Size = new System.Drawing.Size(330, 20);
             this.tb_search.TabIndex = 3;
             // 
             // b_search
@@ -110,7 +118,7 @@
             // 
             this.rb_khoahoc.AutoSize = true;
             this.rb_khoahoc.Checked = true;
-            this.rb_khoahoc.Location = new System.Drawing.Point(12, 28);
+            this.rb_khoahoc.Location = new System.Drawing.Point(0, 2);
             this.rb_khoahoc.Name = "rb_khoahoc";
             this.rb_khoahoc.Size = new System.Drawing.Size(73, 17);
             this.rb_khoahoc.TabIndex = 5;
@@ -122,7 +130,7 @@
             // rb_sinhvien
             // 
             this.rb_sinhvien.AutoSize = true;
-            this.rb_sinhvien.Location = new System.Drawing.Point(89, 27);
+            this.rb_sinhvien.Location = new System.Drawing.Point(88, 0);
             this.rb_sinhvien.Name = "rb_sinhvien";
             this.rb_sinhvien.Size = new System.Drawing.Size(70, 17);
             this.rb_sinhvien.TabIndex = 6;
@@ -131,13 +139,82 @@
             this.rb_sinhvien.UseVisualStyleBackColor = true;
             this.rb_sinhvien.CheckedChanged += new System.EventHandler(this.rb_sinhvien_CheckedChanged);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rb_sinhvien);
+            this.groupBox1.Controls.Add(this.rb_khoahoc);
+            this.groupBox1.Location = new System.Drawing.Point(12, 28);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(162, 22);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rb_dangky);
+            this.groupBox2.Controls.Add(this.rb_dahoc);
+            this.groupBox2.Controls.Add(this.rb_danghoc);
+            this.groupBox2.Location = new System.Drawing.Point(176, 30);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(229, 17);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // rb_danghoc
+            // 
+            this.rb_danghoc.AutoSize = true;
+            this.rb_danghoc.Checked = true;
+            this.rb_danghoc.Location = new System.Drawing.Point(0, 0);
+            this.rb_danghoc.Name = "rb_danghoc";
+            this.rb_danghoc.Size = new System.Drawing.Size(72, 17);
+            this.rb_danghoc.TabIndex = 0;
+            this.rb_danghoc.TabStop = true;
+            this.rb_danghoc.Text = "Dang hoc";
+            this.rb_danghoc.UseVisualStyleBackColor = true;
+            this.rb_danghoc.CheckedChanged += new System.EventHandler(this.rb_danghoc_CheckedChanged);
+            // 
+            // rb_dahoc
+            // 
+            this.rb_dahoc.AutoSize = true;
+            this.rb_dahoc.Location = new System.Drawing.Point(78, 0);
+            this.rb_dahoc.Name = "rb_dahoc";
+            this.rb_dahoc.Size = new System.Drawing.Size(60, 17);
+            this.rb_dahoc.TabIndex = 1;
+            this.rb_dahoc.Text = "Da hoc";
+            this.rb_dahoc.UseVisualStyleBackColor = true;
+            this.rb_dahoc.CheckedChanged += new System.EventHandler(this.rb_dahoc_CheckedChanged);
+            // 
+            // rb_dangky
+            // 
+            this.rb_dangky.AutoSize = true;
+            this.rb_dangky.Location = new System.Drawing.Point(151, 0);
+            this.rb_dangky.Name = "rb_dangky";
+            this.rb_dangky.Size = new System.Drawing.Size(65, 17);
+            this.rb_dangky.TabIndex = 2;
+            this.rb_dangky.Text = "Dang ky";
+            this.rb_dangky.UseVisualStyleBackColor = true;
+            this.rb_dangky.CheckedChanged += new System.EventHandler(this.rb_dangky_CheckedChanged);
+            // 
+            // b_del
+            // 
+            this.b_del.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.b_del.Location = new System.Drawing.Point(768, 307);
+            this.b_del.Name = "b_del";
+            this.b_del.Size = new System.Drawing.Size(104, 42);
+            this.b_del.TabIndex = 9;
+            this.b_del.Text = "Del";
+            this.b_del.UseVisualStyleBackColor = true;
+            // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 361);
-            this.Controls.Add(this.rb_sinhvien);
-            this.Controls.Add(this.rb_khoahoc);
+            this.Controls.Add(this.b_del);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.b_search);
             this.Controls.Add(this.tb_search);
             this.Controls.Add(this.b_add);
@@ -150,6 +227,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,6 +247,12 @@
         private System.Windows.Forms.Button b_search;
         private System.Windows.Forms.RadioButton rb_khoahoc;
         private System.Windows.Forms.RadioButton rb_sinhvien;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rb_danghoc;
+        private System.Windows.Forms.RadioButton rb_dangky;
+        private System.Windows.Forms.RadioButton rb_dahoc;
+        private System.Windows.Forms.Button b_del;
     }
 }
 
