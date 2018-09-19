@@ -9,3 +9,7 @@ C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.ex
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.pdb
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.AddressGUI.resources
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.GUI.resources
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\bin\Debug\MySql.Data.dll
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\bin\Debug\Google.Protobuf.dll
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\bin\Debug\MySql.Data.xml
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Server\Server\obj\Debug\Server.csproj.CopyComplete

@@ -24,7 +24,7 @@ namespace Server
             get;
             set;
         }
-        public bool gioi_tinh
+        public string gioi_tinh
         {
             get;
             set;
@@ -60,7 +60,7 @@ namespace Server
             set;
         }
 
-        public Sinhvien(int id, string ten, string password, bool gioi_tinh, int sdt, string diachi, DateTime ngay_sinh, List<Khoahoc> dang_hoc, List<Khoahoc> dang_ki, List<Khoahoc> da_hoc)
+        public Sinhvien(int id, string ten, string password, string gioi_tinh, int sdt, string diachi, DateTime ngay_sinh, List<Khoahoc> dang_hoc, List<Khoahoc> dang_ki, List<Khoahoc> da_hoc)
         {
             this.id = id;
             this.ten = ten;

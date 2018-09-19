@@ -41,8 +41,8 @@ namespace Server
                 {
 
                 }
-                    
                 server.ServerStart(address,PORT_NUMBER);
+                
                 this.Dispose();
             }
             catch (Exception ex)

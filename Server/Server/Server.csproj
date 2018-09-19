@@ -53,6 +53,7 @@
       <DependentUpon>AddressGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
+    <Compile Include="Diem.cs" />
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,8 +61,6 @@
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Khoahoc.cs" />
-    <Compile Include="QuanlyKhoahoc.cs" />
-    <Compile Include="QuanlySinhvien.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

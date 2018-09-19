@@ -33,8 +33,6 @@
             this.tb_address = new System.Windows.Forms.TextBox();
             this.tb_port = new System.Windows.Forms.TextBox();
             this.b_start = new System.Windows.Forms.Button();
-            this.l_password = new System.Windows.Forms.Label();
-            this.tb_password = new System.Windows.Forms.TextBox();
             this.l_error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -53,7 +51,7 @@
             // 
             this.l_port.AutoSize = true;
             this.l_port.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.l_port.Location = new System.Drawing.Point(227, 7);
+            this.l_port.Location = new System.Drawing.Point(12, 35);
             this.l_port.Name = "l_port";
             this.l_port.Size = new System.Drawing.Size(45, 20);
             this.l_port.TabIndex = 1;
@@ -69,7 +67,7 @@
             // 
             // tb_port
             // 
-            this.tb_port.Location = new System.Drawing.Point(278, 7);
+            this.tb_port.Location = new System.Drawing.Point(101, 35);
             this.tb_port.Name = "tb_port";
             this.tb_port.Size = new System.Drawing.Size(70, 20);
             this.tb_port.TabIndex = 3;
@@ -78,30 +76,13 @@
             // b_start
             // 
             this.b_start.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.b_start.Location = new System.Drawing.Point(231, 35);
+            this.b_start.Location = new System.Drawing.Point(227, 7);
             this.b_start.Name = "b_start";
             this.b_start.Size = new System.Drawing.Size(115, 48);
             this.b_start.TabIndex = 4;
             this.b_start.Text = "Start";
             this.b_start.UseVisualStyleBackColor = true;
             this.b_start.Click += new System.EventHandler(this.b_start_Click);
-            // 
-            // l_password
-            // 
-            this.l_password.AutoSize = true;
-            this.l_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.l_password.Location = new System.Drawing.Point(12, 35);
-            this.l_password.Name = "l_password";
-            this.l_password.Size = new System.Drawing.Size(88, 20);
-            this.l_password.TabIndex = 6;
-            this.l_password.Text = "Password:";
-            // 
-            // tb_password
-            // 
-            this.tb_password.Location = new System.Drawing.Point(101, 37);
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(120, 20);
-            this.tb_password.TabIndex = 7;
             // 
             // l_error
             // 
@@ -117,10 +98,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 91);
+            this.ClientSize = new System.Drawing.Size(349, 78);
             this.Controls.Add(this.l_error);
-            this.Controls.Add(this.tb_password);
-            this.Controls.Add(this.l_password);
             this.Controls.Add(this.b_start);
             this.Controls.Add(this.tb_port);
             this.Controls.Add(this.tb_address);
@@ -140,8 +119,6 @@
         private System.Windows.Forms.TextBox tb_address;
         private System.Windows.Forms.TextBox tb_port;
         private System.Windows.Forms.Button b_start;
-        private System.Windows.Forms.Label l_password;
-        private System.Windows.Forms.TextBox tb_password;
         private System.Windows.Forms.Label l_error;
     }
 }

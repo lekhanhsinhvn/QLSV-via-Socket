@@ -24,26 +24,6 @@ namespace Server
             get;
             set;
         }
-        public float chuyen_can
-        {
-            get;
-            set;
-        }
-        public float giua_ki
-        {
-            get;
-            set;
-        }
-        public float cuoi_ki
-        {
-            get;
-            set;
-        }
-        public float trung_binh
-        {
-            get;
-            set;
-        }
         public string trang_thai
         {
             get;
