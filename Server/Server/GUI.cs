@@ -17,6 +17,7 @@ namespace Server
         string bang;
         public List<Sinhvien> sinhvien_list;
         public List<Khoahoc> khoahoc_list;
+        string a;
         public GUI()
         {
             server = new Server();
@@ -24,6 +25,7 @@ namespace Server
             this.FormClosing += new FormClosingEventHandler(GUI_FormClosing);
             dgv_main.DataSource = ConvertToDataTable(sql.SearchKhoahoc(""));
             bang = "Khoahoc";
+            groupBox2.Hide();
         }
 
         private void addressToolStripMenuItem_Click(object sender, EventArgs e)
@@ -115,6 +117,7 @@ namespace Server
                 bang = "Khoahoc";
                 khoahoc_list = sql.SearchKhoahoc(tb_search.Text);
                 dgv_main.DataSource = ConvertToDataTable(khoahoc_list);
+                groupBox2.Hide();
             }
             
            
@@ -127,6 +130,7 @@ namespace Server
                 bang = "Sinhvien";
                 sinhvien_list = sql.SearchSinhvien(tb_search.Text);
                 dgv_main.DataSource = ConvertToDataTable(sinhvien_list);
+                groupBox2.Hide();
             }
         }
 
@@ -150,7 +154,7 @@ namespace Server
 
                 DataGridViewRow selectedRow = dgv_main.Rows[selectedrowindex];
 
-                string a = Convert.ToString(selectedRow.Cells["id"].Value);
+                a = Convert.ToString(selectedRow.Cells["id"].Value);
                 if (bang.Equals("Khoahoc"))
                 {
                     rb_sinhvien.Checked = true;
@@ -164,7 +168,53 @@ namespace Server
                     }
                    
                 }
+                else if (bang.Equals("Sinhvien"))
+                {
+                    groupBox2.Show();
+                    rb_khoahoc.Checked = true;
+                    bang = "Sinhvien";
+                    foreach (Sinhvien sv in sinhvien_list)
+                    {
+                        if (sv.id == int.Parse(a))
+                        {
+                            ConvertToDataTable(sv.dang_hoc);
+                        }
+                    }
+                }
 
+            }
+        }
+
+        private void rb_danghoc_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (Sinhvien sv in sinhvien_list)
+            {
+                if (sv.id == int.Parse(a))
+                {
+                    ConvertToDataTable(sv.dang_hoc);
+                }
+            }
+        }
+
+        private void rb_dahoc_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (Sinhvien sv in sinhvien_list)
+            {
+                if (sv.id == int.Parse(a))
+                {
+                    ConvertToDataTable(sv.da_hoc);
+                }
+            }
+        }
+
+        private void rb_dangky_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (Sinhvien sv in sinhvien_list)
+            {
+                if (sv.id == int.Parse(a))
+                {
+                    ConvertToDataTable(sv.dang_ki);
+                }
             }
         }
     }
