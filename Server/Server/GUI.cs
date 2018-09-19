@@ -87,8 +87,24 @@ namespace Server
             {
                 DataRow row = table.NewRow();
                 foreach (PropertyDescriptor prop in properties)
-                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                    if (!prop.Name.Equals("password") && !prop.Name.Equals("danh_sach") && !prop.Name.Equals("dang_hoc") && !prop.Name.Equals("dang_ki") && !prop.Name.Equals("da_hoc"))
+                    {
+                        if (typeof(T).IsValueType is Diem)
+                        {
+                            if (!prop.Name.Equals("idsinhvien") && !prop.Name.Equals("idkhoahoc"))
+                            {
+                                row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                            }
+                        }
+                        else
+                        {
+                            row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                            
+                        }
+
+                    }
                 table.Rows.Add(row);
+
             }
             return table;
 
@@ -102,7 +118,8 @@ namespace Server
             }
             else if (bang.Equals("Sinhvien"))
             {
-
+                SinhvienGUI sinhvienGUI = new SinhvienGUI(this);
+                sinhvienGUI.Show();
             }
             else if (bang.Equals("Diem"))
             {
@@ -173,6 +190,7 @@ namespace Server
                     groupBox2.Show();
                     rb_khoahoc.Checked = true;
                     bang = "Sinhvien";
+                    groupBox2.Show();
                     foreach (Sinhvien sv in sinhvien_list)
                     {
                         if (sv.id == int.Parse(a))
@@ -215,6 +233,15 @@ namespace Server
                 {
                     ConvertToDataTable(sv.dang_ki);
                 }
+            }
+        }
+        public void updatebroad(string str)
+        {
+            if (str.Equals("Sinhvien"))
+            {
+                bang = "Sinhvien";
+                rb_sinhvien.Checked = true;
+                dgv_main.DataSource = ConvertToDataTable(sql.SearchSinhvien(tb_search.Text));
             }
         }
     }

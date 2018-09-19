@@ -60,6 +60,15 @@ namespace Server
             set;
         }
 
+        public Sinhvien(string ten, string password, string gioi_tinh, int sdt, string diachi, DateTime ngay_sinh)
+        {
+            this.ten = ten;
+            this.password = password;
+            this.gioi_tinh = gioi_tinh;
+            this.sdt = sdt;
+            this.diachi = diachi;
+            this.ngay_sinh = ngay_sinh;
+        }
         public Sinhvien(int id, string ten, string password, string gioi_tinh, int sdt, string diachi, DateTime ngay_sinh, List<Khoahoc> dang_hoc, List<Khoahoc> dang_ki, List<Khoahoc> da_hoc)
         {
             this.id = id;

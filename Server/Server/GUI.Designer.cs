@@ -39,9 +39,9 @@
             this.rb_sinhvien = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rb_danghoc = new System.Windows.Forms.RadioButton();
-            this.rb_dahoc = new System.Windows.Forms.RadioButton();
             this.rb_dangky = new System.Windows.Forms.RadioButton();
+            this.rb_dahoc = new System.Windows.Forms.RadioButton();
+            this.rb_danghoc = new System.Windows.Forms.RadioButton();
             this.b_del = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -55,6 +55,7 @@
             this.dgv_main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_main.Location = new System.Drawing.Point(12, 53);
             this.dgv_main.Name = "dgv_main";
+            this.dgv_main.ReadOnly = true;
             this.dgv_main.RowHeadersVisible = false;
             this.dgv_main.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_main.Size = new System.Drawing.Size(750, 296);
@@ -162,18 +163,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // rb_danghoc
+            // rb_dangky
             // 
-            this.rb_danghoc.AutoSize = true;
-            this.rb_danghoc.Checked = true;
-            this.rb_danghoc.Location = new System.Drawing.Point(0, 0);
-            this.rb_danghoc.Name = "rb_danghoc";
-            this.rb_danghoc.Size = new System.Drawing.Size(72, 17);
-            this.rb_danghoc.TabIndex = 0;
-            this.rb_danghoc.TabStop = true;
-            this.rb_danghoc.Text = "Dang hoc";
-            this.rb_danghoc.UseVisualStyleBackColor = true;
-            this.rb_danghoc.CheckedChanged += new System.EventHandler(this.rb_danghoc_CheckedChanged);
+            this.rb_dangky.AutoSize = true;
+            this.rb_dangky.Location = new System.Drawing.Point(151, 0);
+            this.rb_dangky.Name = "rb_dangky";
+            this.rb_dangky.Size = new System.Drawing.Size(65, 17);
+            this.rb_dangky.TabIndex = 2;
+            this.rb_dangky.Text = "Dang ky";
+            this.rb_dangky.UseVisualStyleBackColor = true;
+            this.rb_dangky.CheckedChanged += new System.EventHandler(this.rb_dangky_CheckedChanged);
             // 
             // rb_dahoc
             // 
@@ -186,16 +185,18 @@
             this.rb_dahoc.UseVisualStyleBackColor = true;
             this.rb_dahoc.CheckedChanged += new System.EventHandler(this.rb_dahoc_CheckedChanged);
             // 
-            // rb_dangky
+            // rb_danghoc
             // 
-            this.rb_dangky.AutoSize = true;
-            this.rb_dangky.Location = new System.Drawing.Point(151, 0);
-            this.rb_dangky.Name = "rb_dangky";
-            this.rb_dangky.Size = new System.Drawing.Size(65, 17);
-            this.rb_dangky.TabIndex = 2;
-            this.rb_dangky.Text = "Dang ky";
-            this.rb_dangky.UseVisualStyleBackColor = true;
-            this.rb_dangky.CheckedChanged += new System.EventHandler(this.rb_dangky_CheckedChanged);
+            this.rb_danghoc.AutoSize = true;
+            this.rb_danghoc.Checked = true;
+            this.rb_danghoc.Location = new System.Drawing.Point(0, 0);
+            this.rb_danghoc.Name = "rb_danghoc";
+            this.rb_danghoc.Size = new System.Drawing.Size(72, 17);
+            this.rb_danghoc.TabIndex = 0;
+            this.rb_danghoc.TabStop = true;
+            this.rb_danghoc.Text = "Dang hoc";
+            this.rb_danghoc.UseVisualStyleBackColor = true;
+            this.rb_danghoc.CheckedChanged += new System.EventHandler(this.rb_danghoc_CheckedChanged);
             // 
             // b_del
             // 

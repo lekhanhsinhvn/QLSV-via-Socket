@@ -87,29 +87,8 @@ namespace Server
         }
         public void InsertSinhvien(Sinhvien sv)
         {
-            string dahoc = "";
-            foreach (Khoahoc kh in sv.da_hoc)
-            {
-                dahoc += kh.id.ToString() + ",";
-            }
-
-            string danghoc = "";
-
-            foreach (Khoahoc kh in sv.dang_hoc)
-            {
-                danghoc += kh.id.ToString() + ",";
-            }
-
-            string dangky = "";
-
-            foreach (Khoahoc kh in sv.dang_ki)
-            {
-                dangky += kh.id.ToString() + ",";
-            }
-
-            string query = "INSERT INTO sinhvien (tensinhvien, passwords, gioitinh, namsinh, sdt, diachi, dahoc, danghoc, dangky) VALUES('"
-                                                    + sv.ten + "','" + sv.password + "','" + sv.gioi_tinh + "','" + sv.ngay_sinh + "','" + sv.sdt + "','"
-                                                    + sv.diachi + "','" + dahoc + "','" + sv.dang_hoc + "','" + sv.dang_ki + "')";
+            string query = "INSERT INTO sinhvien (tensinhvien, passwords, gioitinh, namsinh, sdt, diachi) VALUES('"
+                                                    + sv.ten + "','" + sv.password + "','" + sv.gioi_tinh + "','" + sv.ngay_sinh.ToString() + "','" + sv.sdt + "','" + sv.diachi + "');";
 
             //open connection
             if (this.OpenConnection() == true)
@@ -121,7 +100,15 @@ namespace Server
                 cmd.ExecuteNonQuery();
 
                 //close connection
-                this.CloseConnection();
+                try
+                {
+                    this.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
             }
         }
 
@@ -133,7 +120,14 @@ namespace Server
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                this.CloseConnection();
+                try
+                {
+                    this.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -161,66 +155,80 @@ namespace Server
                 while (dataReader.Read())
                 {
                     string danghocstr = dataReader["danghoc"] + "";
-                    string[] datadanghoc = Regex.Split(str, ",");
                     List<Khoahoc> dang_hoc = new List<Khoahoc>();
-                    for (int i = 0; i < datadanghoc.Length; i++)
+                    if (!string.IsNullOrWhiteSpace(danghocstr))
                     {
-                        foreach (Khoahoc kh in khoahoc_list)
+                        string[] datadanghoc = Regex.Split(str, ",");
+                        
+                        for (int i = 0; i < datadanghoc.Length; i++)
                         {
-                            if (int.Parse(datadanghoc[i]) == kh.id)
+                            foreach (Khoahoc kh in khoahoc_list)
                             {
-                                dang_hoc.Add(kh);
+                                if (int.Parse(datadanghoc[i]) == kh.id)
+                                {
+                                    dang_hoc.Add(kh);
+                                }
                             }
                         }
                     }
+                    
                     string dahocstr = dataReader["dahoc"] + "";
-                    string[] datadahoc = Regex.Split(str, ",");
                     List<Khoahoc> da_hoc = new List<Khoahoc>();
-                    for (int i = 0; i < datadahoc.Length; i++)
+                    if (!string.IsNullOrWhiteSpace(dahocstr))
                     {
-                        foreach (Khoahoc kh in khoahoc_list)
+                        string[] datadahoc = Regex.Split(str, ",");
+                        
+                        for (int i = 0; i < datadahoc.Length; i++)
                         {
-                            if (int.Parse(datadahoc[i]) == kh.id)
+                            foreach (Khoahoc kh in khoahoc_list)
                             {
-                                dang_hoc.Add(kh);
+                                if (int.Parse(datadahoc[i]) == kh.id)
+                                {
+                                    da_hoc.Add(kh);
+                                }
                             }
                         }
                     }
+                    
                     string dangkistr = dataReader["danghoc"] + "";
-                    string[] datadangki = Regex.Split(str, ",");
                     List<Khoahoc> dang_ki = new List<Khoahoc>();
-                    for (int i = 0; i < datadangki.Length; i++)
+                    if (!string.IsNullOrWhiteSpace(dangkistr))
                     {
-                        foreach (Khoahoc kh in khoahoc_list)
+                        string[] datadangki = Regex.Split(str, ",");
+
+                        for (int i = 0; i < datadangki.Length; i++)
                         {
-                            if (int.Parse(datadangki[i]) == kh.id)
+                            foreach (Khoahoc kh in khoahoc_list)
                             {
-                                dang_hoc.Add(kh);
+                                if (int.Parse(datadangki[i]) == kh.id)
+                                {
+                                    dang_ki.Add(kh);
+                                }
                             }
                         }
                     }
+                    
                     Sinhvien sv = new Sinhvien(int.Parse(dataReader["idsinhvien"] + ""), dataReader["tensinhvien"] + "", dataReader["passwords"] + "", dataReader["gioitinh"] + "", int.Parse(dataReader["sdt"] + ""), dataReader["diachi"] + "", DateTime.Parse(dataReader["namsinh"] + ""), dang_hoc, dang_ki, da_hoc);
                     svsearch_list.Add(sv);
                 }
 
                 //close connection
-                this.CloseConnection();
+                try
+                {
+                    this.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
             }
             return svsearch_list;
         }
         public void InsertKhoahoc(Khoahoc kh)
         {
-            string danh_sach = "";
-            foreach (Sinhvien sv in kh.danh_sach)
-            {
-                danh_sach += kh.id.ToString() + ",";
-            }
-
-
-
-            string query = "INSERT INTO khoahoc (ten, danh_sach, trang_thai, max_danhsach, batdau_dangky, bat_dau_hoc) VALUES('"
-                                       + kh.ten + "','" + kh.danh_sach + "','" + kh.trang_thai + "','" + kh.max_danhsach + "','" + kh.batdau_dangky + "','" + kh.batdau_hoc + "')";
+            string query = "INSERT INTO khoahoc (ten, trang_thai, max_danhsach, batdau_dangky, bat_dau_hoc) VALUES('"
+                                       + kh.ten + "','" + kh.trang_thai + "','" + kh.max_danhsach + "','" + kh.batdau_dangky + "','" + kh.batdau_hoc + "')";
 
             //open connection
             if (this.OpenConnection() == true)
@@ -232,7 +240,14 @@ namespace Server
                 cmd.ExecuteNonQuery();
 
                 //close connection
-                this.CloseConnection();
+                try
+                {
+                    this.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -254,7 +269,14 @@ namespace Server
                 }
                 finally
                 {
-                    this.CloseConnection();
+                    try
+                    {
+                        this.CloseConnection();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
             }
         }
@@ -301,7 +323,14 @@ namespace Server
                 }
 
                 //close connection
-                this.CloseConnection();
+                try
+                {
+                    this.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
             }
             return khsearch_list;
@@ -321,7 +350,14 @@ namespace Server
                 cmd.ExecuteNonQuery();
 
                 //close connection
-                this.CloseConnection();
+                try
+                {
+                    this.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -343,7 +379,14 @@ namespace Server
                 }
                 finally
                 {
-                    this.CloseConnection();
+                    try
+                    {
+                        this.CloseConnection();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
             }
         }
@@ -376,7 +419,14 @@ namespace Server
                 }
 
                 //close connection
-                this.CloseConnection();
+                try
+                {
+                    this.CloseConnection();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
             }
             return dsearch_list;

@@ -54,11 +54,11 @@
     </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="Diem.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="SinhvienGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="SinhvienGUI.Designer.cs">
+      <DependentUpon>SinhvienGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI.cs">
       <SubType>Form</SubType>
@@ -75,8 +75,8 @@
     <EmbeddedResource Include="AddressGUI.resx">
       <DependentUpon>AddressGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="SinhvienGUI.resx">
+      <DependentUpon>SinhvienGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace Server
 {
-    partial class Form1
+    partial class SinhvienGUI
     {
         /// <summary>
         /// Required designer variable.
@@ -36,13 +36,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tb_hoten = new System.Windows.Forms.TextBox();
             this.tb_password = new System.Windows.Forms.TextBox();
-            this.r_sdt = new System.Windows.Forms.TextBox();
-            this.r_ngaysinh = new System.Windows.Forms.TextBox();
-            this.r_diachi = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.r_nam = new System.Windows.Forms.RadioButton();
-            this.r_nu = new System.Windows.Forms.RadioButton();
+            this.tb_sdt = new System.Windows.Forms.TextBox();
+            this.tb_ngaysinh = new System.Windows.Forms.TextBox();
+            this.tb_diachi = new System.Windows.Forms.TextBox();
+            this.b_reset = new System.Windows.Forms.Button();
+            this.b_save = new System.Windows.Forms.Button();
+            this.rb_nam = new System.Windows.Forms.RadioButton();
+            this.rb_nu = new System.Windows.Forms.RadioButton();
+            this.l_error = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // l_hoten
@@ -114,82 +115,95 @@
             this.tb_password.Size = new System.Drawing.Size(216, 20);
             this.tb_password.TabIndex = 7;
             // 
-            // r_sdt
+            // tb_sdt
             // 
-            this.r_sdt.Location = new System.Drawing.Point(134, 172);
-            this.r_sdt.Name = "r_sdt";
-            this.r_sdt.Size = new System.Drawing.Size(216, 20);
-            this.r_sdt.TabIndex = 8;
+            this.tb_sdt.Location = new System.Drawing.Point(134, 172);
+            this.tb_sdt.Name = "tb_sdt";
+            this.tb_sdt.Size = new System.Drawing.Size(216, 20);
+            this.tb_sdt.TabIndex = 8;
             // 
-            // r_ngaysinh
+            // tb_ngaysinh
             // 
-            this.r_ngaysinh.Location = new System.Drawing.Point(134, 213);
-            this.r_ngaysinh.Name = "r_ngaysinh";
-            this.r_ngaysinh.Size = new System.Drawing.Size(216, 20);
-            this.r_ngaysinh.TabIndex = 9;
+            this.tb_ngaysinh.Location = new System.Drawing.Point(134, 213);
+            this.tb_ngaysinh.Name = "tb_ngaysinh";
+            this.tb_ngaysinh.Size = new System.Drawing.Size(216, 20);
+            this.tb_ngaysinh.TabIndex = 9;
             // 
-            // r_diachi
+            // tb_diachi
             // 
-            this.r_diachi.Location = new System.Drawing.Point(134, 258);
-            this.r_diachi.Multiline = true;
-            this.r_diachi.Name = "r_diachi";
-            this.r_diachi.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.r_diachi.Size = new System.Drawing.Size(216, 71);
-            this.r_diachi.TabIndex = 10;
+            this.tb_diachi.Location = new System.Drawing.Point(134, 258);
+            this.tb_diachi.Multiline = true;
+            this.tb_diachi.Name = "tb_diachi";
+            this.tb_diachi.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.tb_diachi.Size = new System.Drawing.Size(216, 71);
+            this.tb_diachi.TabIndex = 10;
             // 
-            // button1
+            // b_reset
             // 
-            this.button1.Location = new System.Drawing.Point(134, 361);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Tag = "";
-            this.button1.Text = "&Reset";
-            this.button1.UseVisualStyleBackColor = true;
+            this.b_reset.Location = new System.Drawing.Point(134, 361);
+            this.b_reset.Name = "b_reset";
+            this.b_reset.Size = new System.Drawing.Size(75, 23);
+            this.b_reset.TabIndex = 11;
+            this.b_reset.Tag = "";
+            this.b_reset.Text = "&Reset";
+            this.b_reset.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // b_save
             // 
-            this.button2.Location = new System.Drawing.Point(275, 361);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "&Save";
-            this.button2.UseVisualStyleBackColor = true;
+            this.b_save.Location = new System.Drawing.Point(275, 361);
+            this.b_save.Name = "b_save";
+            this.b_save.Size = new System.Drawing.Size(75, 23);
+            this.b_save.TabIndex = 12;
+            this.b_save.Text = "&Save";
+            this.b_save.UseVisualStyleBackColor = true;
+            this.b_save.Click += new System.EventHandler(this.b_save_Click);
             // 
-            // r_nam
+            // rb_nam
             // 
-            this.r_nam.AutoSize = true;
-            this.r_nam.Location = new System.Drawing.Point(134, 128);
-            this.r_nam.Name = "r_nam";
-            this.r_nam.Size = new System.Drawing.Size(47, 17);
-            this.r_nam.TabIndex = 13;
-            this.r_nam.TabStop = true;
-            this.r_nam.Text = "Nam";
-            this.r_nam.UseVisualStyleBackColor = true;
+            this.rb_nam.AutoSize = true;
+            this.rb_nam.Checked = true;
+            this.rb_nam.Location = new System.Drawing.Point(134, 128);
+            this.rb_nam.Name = "rb_nam";
+            this.rb_nam.Size = new System.Drawing.Size(47, 17);
+            this.rb_nam.TabIndex = 13;
+            this.rb_nam.TabStop = true;
+            this.rb_nam.Text = "Nam";
+            this.rb_nam.UseVisualStyleBackColor = true;
             // 
-            // r_nu
+            // rb_nu
             // 
-            this.r_nu.AutoSize = true;
-            this.r_nu.Location = new System.Drawing.Point(209, 128);
-            this.r_nu.Name = "r_nu";
-            this.r_nu.Size = new System.Drawing.Size(39, 17);
-            this.r_nu.TabIndex = 14;
-            this.r_nu.TabStop = true;
-            this.r_nu.Text = "Nu";
-            this.r_nu.UseVisualStyleBackColor = true;
+            this.rb_nu.AutoSize = true;
+            this.rb_nu.Location = new System.Drawing.Point(209, 128);
+            this.rb_nu.Name = "rb_nu";
+            this.rb_nu.Size = new System.Drawing.Size(39, 17);
+            this.rb_nu.TabIndex = 14;
+            this.rb_nu.Text = "Nu";
+            this.rb_nu.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // l_error
+            // 
+            this.l_error.AutoSize = true;
+            this.l_error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.l_error.ForeColor = System.Drawing.Color.Red;
+            this.l_error.Location = new System.Drawing.Point(30, 367);
+            this.l_error.Name = "l_error";
+            this.l_error.Size = new System.Drawing.Size(12, 17);
+            this.l_error.TabIndex = 15;
+            this.l_error.Text = " ";
+            // 
+            // SinhvienGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 419);
-            this.Controls.Add(this.r_nu);
-            this.Controls.Add(this.r_nam);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.r_diachi);
-            this.Controls.Add(this.r_ngaysinh);
-            this.Controls.Add(this.r_sdt);
+            this.Controls.Add(this.l_error);
+            this.Controls.Add(this.rb_nu);
+            this.Controls.Add(this.rb_nam);
+            this.Controls.Add(this.b_save);
+            this.Controls.Add(this.b_reset);
+            this.Controls.Add(this.tb_diachi);
+            this.Controls.Add(this.tb_ngaysinh);
+            this.Controls.Add(this.tb_sdt);
             this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_hoten);
             this.Controls.Add(this.label6);
@@ -198,7 +212,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.l_hoten);
-            this.Name = "Form1";
+            this.Name = "SinhvienGUI";
             this.Text = "Them sinh vien";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -215,12 +229,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tb_hoten;
         private System.Windows.Forms.TextBox tb_password;
-        private System.Windows.Forms.TextBox r_sdt;
-        private System.Windows.Forms.TextBox r_ngaysinh;
-        private System.Windows.Forms.TextBox r_diachi;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RadioButton r_nam;
-        private System.Windows.Forms.RadioButton r_nu;
+        private System.Windows.Forms.TextBox tb_sdt;
+        private System.Windows.Forms.TextBox tb_ngaysinh;
+        private System.Windows.Forms.TextBox tb_diachi;
+        private System.Windows.Forms.Button b_reset;
+        private System.Windows.Forms.Button b_save;
+        private System.Windows.Forms.RadioButton rb_nam;
+        private System.Windows.Forms.RadioButton rb_nu;
+        private System.Windows.Forms.Label l_error;
     }
 }
