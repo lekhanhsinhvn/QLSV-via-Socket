@@ -14,10 +14,9 @@ namespace Client
         [STAThread]
         static void Main()
         {
-            Client client = new Client();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI(client));
+            Application.Run(new GUI());
         }
     }
 }

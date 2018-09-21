@@ -43,6 +43,7 @@
             this.rb_dahoc = new System.Windows.Forms.RadioButton();
             this.rb_danghoc = new System.Windows.Forms.RadioButton();
             this.b_del = new System.Windows.Forms.Button();
+            this.b_edit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,7 +91,7 @@
             // b_add
             // 
             this.b_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.b_add.Location = new System.Drawing.Point(768, 259);
+            this.b_add.Location = new System.Drawing.Point(768, 211);
             this.b_add.Name = "b_add";
             this.b_add.Size = new System.Drawing.Size(104, 42);
             this.b_add.TabIndex = 2;
@@ -207,12 +208,25 @@
             this.b_del.TabIndex = 9;
             this.b_del.Text = "Del";
             this.b_del.UseVisualStyleBackColor = true;
+            this.b_del.Click += new System.EventHandler(this.b_del_Click);
+            // 
+            // b_edit
+            // 
+            this.b_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.b_edit.Location = new System.Drawing.Point(768, 259);
+            this.b_edit.Name = "b_edit";
+            this.b_edit.Size = new System.Drawing.Size(104, 42);
+            this.b_edit.TabIndex = 10;
+            this.b_edit.Text = "Edit";
+            this.b_edit.UseVisualStyleBackColor = true;
+            this.b_edit.Click += new System.EventHandler(this.b_edit_Click);
             // 
             // GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 361);
+            this.Controls.Add(this.b_edit);
             this.Controls.Add(this.b_del);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -224,6 +238,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "GUI";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GUI_FormClosing);
             this.Load += new System.EventHandler(this.GUI_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_main)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -254,6 +269,7 @@
         private System.Windows.Forms.RadioButton rb_dangky;
         private System.Windows.Forms.RadioButton rb_dahoc;
         private System.Windows.Forms.Button b_del;
+        private System.Windows.Forms.Button b_edit;
     }
 }
 

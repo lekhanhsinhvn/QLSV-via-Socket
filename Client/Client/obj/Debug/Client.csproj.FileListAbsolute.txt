@@ -1,11 +1,11 @@
-C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\bin\Debug\Client.exe
-C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\bin\Debug\Client.pdb
-C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.LoginGUI.resources
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.AddressGUI.resources
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.Properties.Resources.resources
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.csproj.GenerateResource.cache
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
-C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.exe
-C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.pdb
 C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.GUI.resources
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Client.csprojAssemblyReference.cache
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\bin\Debug\Server.exe
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\bin\Debug\Server.pdb
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Server.exe
+C:\Users\ADMIN\Desktop\Project\QLSV-via-Socket\Client\Client\obj\Debug\Server.pdb

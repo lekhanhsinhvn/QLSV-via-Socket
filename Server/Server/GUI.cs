@@ -15,17 +15,14 @@ namespace Server
         private Server server;
         private SQL sql = new SQL();
         string bang;
-        public List<Sinhvien> sinhvien_list;
-        public List<Khoahoc> khoahoc_list;
+        int idtemp;
         string a;
         public GUI()
         {
             server = new Server();
             InitializeComponent();
-            this.FormClosing += new FormClosingEventHandler(GUI_FormClosing);
-            dgv_main.DataSource = ConvertToDataTable(sql.SearchKhoahoc(""));
-            bang = "Khoahoc";
-            groupBox2.Hide();
+            updatebroad("Khoahoc");
+            
         }
 
         private void addressToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,6 +53,7 @@ namespace Server
                 {
 
                 }
+                Environment.Exit(Environment.ExitCode);
             }
             else
             {
@@ -68,14 +66,11 @@ namespace Server
             PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
             DataTable table = new DataTable();
             foreach (PropertyDescriptor prop in properties)
-                if (!prop.Name.Equals("password") && !prop.Name.Equals("danh_sach") && !prop.Name.Equals("dang_hoc") && !prop.Name.Equals("dang_ki") && !prop.Name.Equals("da_hoc"))
+                if (!prop.Name.Equals("password") && !prop.Name.Equals("dang_hoc") && !prop.Name.Equals("dang_ki") && !prop.Name.Equals("da_hoc"))
                 {
-                    if (typeof(T).IsValueType is Diem)
+                    if (prop.Name.Equals("danh_sach"))
                     {
-                        if (!prop.Name.Equals("idsinhvien") && !prop.Name.Equals("idkhoahoc"))
-                        {
-                            table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-                        }
+                        table.Columns.Add("so_sv", typeof(string));
                     }
                     else
                     {
@@ -86,25 +81,33 @@ namespace Server
             foreach (T item in data)
             {
                 DataRow row = table.NewRow();
-                foreach (PropertyDescriptor prop in properties)
-                    if (!prop.Name.Equals("password") && !prop.Name.Equals("danh_sach") && !prop.Name.Equals("dang_hoc") && !prop.Name.Equals("dang_ki") && !prop.Name.Equals("da_hoc"))
+                int idkh=0;
+                foreach (PropertyDescriptor prop in properties) {
+                    if (prop.Name.Equals("id"))
                     {
-                        if (typeof(T).IsValueType is Diem)
+                        idkh = (Int32)prop.GetValue(item);
+                    }
+                    if (!prop.Name.Equals("password") && !prop.Name.Equals("dang_hoc") && !prop.Name.Equals("dang_ki") && !prop.Name.Equals("da_hoc"))
+                    {
+                        if (prop.Name.Equals("danh_sach"))
                         {
-                            if (!prop.Name.Equals("idsinhvien") && !prop.Name.Equals("idkhoahoc"))
+                            foreach(Khoahoc kh in sql.SearchKhoahoc(""))
                             {
-                                row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                                if (idkh == kh.id)
+                                {
+                                    row["so_sv"] = kh.danh_sach.Count();
+                                }
                             }
+                            
                         }
                         else
                         {
                             row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
-                            
                         }
 
                     }
-                table.Rows.Add(row);
-
+                    
+                }table.Rows.Add(row);
             }
             return table;
 
@@ -114,16 +117,13 @@ namespace Server
         {
             if (bang.Equals("Khoahoc"))
             {
-
+                KhoahocGUI khoahocGUI = new KhoahocGUI(this);
+                khoahocGUI.Show();
             }
             else if (bang.Equals("Sinhvien"))
             {
                 SinhvienGUI sinhvienGUI = new SinhvienGUI(this);
                 sinhvienGUI.Show();
-            }
-            else if (bang.Equals("Diem"))
-            {
-
             }
         }
 
@@ -131,10 +131,7 @@ namespace Server
         {
             if (rb_khoahoc.Checked)
             {
-                bang = "Khoahoc";
-                khoahoc_list = sql.SearchKhoahoc(tb_search.Text);
-                dgv_main.DataSource = ConvertToDataTable(khoahoc_list);
-                groupBox2.Hide();
+                updatebroad("Khoahoc");
             }
             
            
@@ -144,10 +141,7 @@ namespace Server
         {
             if (rb_sinhvien.Checked)
             {
-                bang = "Sinhvien";
-                sinhvien_list = sql.SearchSinhvien(tb_search.Text);
-                dgv_main.DataSource = ConvertToDataTable(sinhvien_list);
-                groupBox2.Hide();
+                updatebroad("Sinhvien");
             }
         }
 
@@ -155,11 +149,11 @@ namespace Server
         {
             if (bang.Equals("Sinhvien"))
             {
-                dgv_main.DataSource = ConvertToDataTable(sql.SearchSinhvien(tb_search.Text));
+                updatebroad("Sinhvien");
             }
             else if(bang.Equals("Khoahoc"))
             {
-                dgv_main.DataSource = ConvertToDataTable(sql.SearchKhoahoc(tb_search.Text));
+                updatebroad("Khoahoc");
             }
         }
 
@@ -172,66 +166,75 @@ namespace Server
                 DataGridViewRow selectedRow = dgv_main.Rows[selectedrowindex];
 
                 a = Convert.ToString(selectedRow.Cells["id"].Value);
-                if (bang.Equals("Khoahoc"))
+                if (bang.Equals("Khoahoc") && idtemp<=0)
                 {
                     rb_sinhvien.Checked = true;
                     bang="Sinhvien";
-                    foreach (Khoahoc kh in khoahoc_list)
+                    foreach (Khoahoc kh in sql.SearchKhoahoc(tb_search.Text))
                     {
                         if (kh.id == int.Parse(a))
                         {
-                            ConvertToDataTable(kh.danh_sach);
+                            dgv_main.DataSource = ConvertToDataTable(kh.danh_sach);
+                            idtemp = kh.id;
                         }
                     }
                    
                 }
-                else if (bang.Equals("Sinhvien"))
+                else if (bang.Equals("Sinhvien") && idtemp<=0)
                 {
-                    groupBox2.Show();
                     rb_khoahoc.Checked = true;
                     bang = "Sinhvien";
                     groupBox2.Show();
-                    foreach (Sinhvien sv in sinhvien_list)
+                    foreach (Sinhvien sv in sql.SearchSinhvien(tb_search.Text))
                     {
                         if (sv.id == int.Parse(a))
                         {
-                            ConvertToDataTable(sv.dang_hoc);
+                            dgv_main.DataSource = ConvertToDataTable(sv.dang_hoc);
+                            idtemp = sv.id;
                         }
                     }
                 }
-
+                else if (bang.Equals("Khoahoc") && idtemp > 0)
+                {
+                    bang = "Diem";
+                    dgv_main.DataSource= ConvertToDataTable(sql.SelectDiem(idtemp, int.Parse(a)));
+                }
+                else if (bang.Equals("Sinhvien") && idtemp > 0)
+                {
+                    dgv_main.DataSource = ConvertToDataTable(sql.SelectDiem(int.Parse(a), idtemp));
+                }
             }
         }
 
         private void rb_danghoc_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (Sinhvien sv in sinhvien_list)
+            foreach (Sinhvien sv in sql.SearchSinhvien(""))
             {
                 if (sv.id == int.Parse(a))
                 {
-                    ConvertToDataTable(sv.dang_hoc);
+                    dgv_main.DataSource = ConvertToDataTable(sv.dang_hoc);
                 }
             }
         }
 
         private void rb_dahoc_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (Sinhvien sv in sinhvien_list)
+            foreach (Sinhvien sv in sql.SearchSinhvien(""))
             {
                 if (sv.id == int.Parse(a))
                 {
-                    ConvertToDataTable(sv.da_hoc);
+                    dgv_main.DataSource = ConvertToDataTable(sv.da_hoc);
                 }
             }
         }
 
         private void rb_dangky_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (Sinhvien sv in sinhvien_list)
+            foreach (Sinhvien sv in sql.SearchSinhvien(""))
             {
                 if (sv.id == int.Parse(a))
                 {
-                    ConvertToDataTable(sv.dang_ki);
+                    dgv_main.DataSource = ConvertToDataTable(sv.dang_ki);
                 }
             }
         }
@@ -243,6 +246,101 @@ namespace Server
                 rb_sinhvien.Checked = true;
                 dgv_main.DataSource = ConvertToDataTable(sql.SearchSinhvien(tb_search.Text));
             }
+            else if (str.Equals("Khoahoc"))
+            {
+                bang = "Khoahoc";
+                rb_khoahoc.Checked = true;
+                dgv_main.DataSource = ConvertToDataTable(sql.SearchKhoahoc(tb_search.Text));
+            }
+            idtemp = 0;
+            groupBox2.Hide();
+        }
+
+        private void b_edit_Click(object sender, EventArgs e)
+        {
+            if (dgv_main.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgv_main.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgv_main.Rows[selectedrowindex];
+
+                a = Convert.ToString(selectedRow.Cells["id"].Value);
+                if (bang.Equals("Khoahoc"))
+                {
+                    foreach (Khoahoc kh in sql.SearchKhoahoc(tb_search.Text))
+                    {
+                        if(kh.id == int.Parse(a))
+                        {
+                            KhoahocGUI khoahocGUI = new KhoahocGUI(this, kh);
+                            khoahocGUI.Show();
+                        }
+                    }
+
+                }
+                else if (bang.Equals("Sinhvien"))
+                {
+                    
+                    foreach (Sinhvien sv in sql.SearchSinhvien(tb_search.Text))
+                    {
+                        if (sv.id == int.Parse(a))
+                        {
+                            SinhvienGUI sinhvienGUI = new SinhvienGUI(this, sv);
+                            sinhvienGUI.Show();
+                        }
+                    }
+                }
+                else if (bang.Equals("Diem"))
+                {
+                    foreach (Diem diem in sql.SearchDiem(""))
+                    {
+                        if (diem.id == int.Parse(a))
+                        {
+                            DiemGUI diemGUI = new DiemGUI(this, diem);
+                            diemGUI.Show();
+                        }
+                    }
+                    
+                }
+
+            }
+
+        }
+
+        private void b_del_Click(object sender, EventArgs e)
+        {
+            if (dgv_main.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgv_main.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgv_main.Rows[selectedrowindex];
+
+                a = Convert.ToString(selectedRow.Cells["id"].Value);
+                if (bang.Equals("Khoahoc"))
+                {
+                    foreach (Khoahoc kh in sql.SearchKhoahoc(tb_search.Text))
+                    {
+                        if (kh.id == int.Parse(a))
+                        {
+                            sql.DeleteKhoahoc(kh);
+                        }
+                    }
+                    updatebroad("Khoahoc");
+
+                }
+                else if (bang.Equals("Sinhvien"))
+                {
+                    foreach (Sinhvien sv in sql.SearchSinhvien(tb_search.Text))
+                    {
+                        if (sv.id == int.Parse(a))
+                        {
+                            sql.DeleteSinhvien(sv);
+                        }
+                    }
+                    updatebroad("Sinhvien");
+                }
+                
+            }
+            
         }
     }
 }

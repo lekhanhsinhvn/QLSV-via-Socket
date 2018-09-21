@@ -28,136 +28,111 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.b_reset = new System.Windows.Forms.Button();
-            this.b_save = new System.Windows.Forms.Button();
-            this.tb_idsinhvien = new System.Windows.Forms.TextBox();
-            this.tb_idkhoahoc = new System.Windows.Forms.TextBox();
-            this.tb_chuyencan = new System.Windows.Forms.TextBox();
-            this.tb_giuaki = new System.Windows.Forms.TextBox();
-            this.l_idsinhvien = new System.Windows.Forms.Label();
-            this.l_idkhoahoc = new System.Windows.Forms.Label();
             this.l_chuyencan = new System.Windows.Forms.Label();
+            this.tb_chuyencan = new System.Windows.Forms.TextBox();
             this.l_giuaki = new System.Windows.Forms.Label();
+            this.tb_giuaki = new System.Windows.Forms.TextBox();
             this.l_cuoiki = new System.Windows.Forms.Label();
             this.tb_cuoiki = new System.Windows.Forms.TextBox();
+            this.b_save = new System.Windows.Forms.Button();
+            this.b_reset = new System.Windows.Forms.Button();
+            this.l_error = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // b_reset
-            // 
-            this.b_reset.Location = new System.Drawing.Point(128, 257);
-            this.b_reset.Name = "b_reset";
-            this.b_reset.Size = new System.Drawing.Size(75, 23);
-            this.b_reset.TabIndex = 0;
-            this.b_reset.Text = "&Reset";
-            this.b_reset.UseVisualStyleBackColor = true;
-            // 
-            // b_save
-            // 
-            this.b_save.Location = new System.Drawing.Point(235, 257);
-            this.b_save.Name = "b_save";
-            this.b_save.Size = new System.Drawing.Size(75, 23);
-            this.b_save.TabIndex = 1;
-            this.b_save.Text = "&Save";
-            this.b_save.UseVisualStyleBackColor = true;
-            // 
-            // tb_idsinhvien
-            // 
-            this.tb_idsinhvien.Location = new System.Drawing.Point(128, 23);
-            this.tb_idsinhvien.Name = "tb_idsinhvien";
-            this.tb_idsinhvien.Size = new System.Drawing.Size(182, 20);
-            this.tb_idsinhvien.TabIndex = 2;
-            // 
-            // tb_idkhoahoc
-            // 
-            this.tb_idkhoahoc.Location = new System.Drawing.Point(128, 65);
-            this.tb_idkhoahoc.Name = "tb_idkhoahoc";
-            this.tb_idkhoahoc.Size = new System.Drawing.Size(182, 20);
-            this.tb_idkhoahoc.TabIndex = 3;
-            // 
-            // tb_chuyencan
-            // 
-            this.tb_chuyencan.Location = new System.Drawing.Point(128, 109);
-            this.tb_chuyencan.Name = "tb_chuyencan";
-            this.tb_chuyencan.Size = new System.Drawing.Size(182, 20);
-            this.tb_chuyencan.TabIndex = 4;
-            // 
-            // tb_giuaki
-            // 
-            this.tb_giuaki.Location = new System.Drawing.Point(128, 158);
-            this.tb_giuaki.Name = "tb_giuaki";
-            this.tb_giuaki.Size = new System.Drawing.Size(182, 20);
-            this.tb_giuaki.TabIndex = 5;
-            // 
-            // l_idsinhvien
-            // 
-            this.l_idsinhvien.AutoSize = true;
-            this.l_idsinhvien.Location = new System.Drawing.Point(41, 26);
-            this.l_idsinhvien.Name = "l_idsinhvien";
-            this.l_idsinhvien.Size = new System.Drawing.Size(67, 13);
-            this.l_idsinhvien.TabIndex = 6;
-            this.l_idsinhvien.Text = "Id sinh vien :";
-            // 
-            // l_idkhoahoc
-            // 
-            this.l_idkhoahoc.AutoSize = true;
-            this.l_idkhoahoc.Location = new System.Drawing.Point(41, 68);
-            this.l_idkhoahoc.Name = "l_idkhoahoc";
-            this.l_idkhoahoc.Size = new System.Drawing.Size(70, 13);
-            this.l_idkhoahoc.TabIndex = 7;
-            this.l_idkhoahoc.Text = "Id khoa hoc :";
             // 
             // l_chuyencan
             // 
             this.l_chuyencan.AutoSize = true;
-            this.l_chuyencan.Location = new System.Drawing.Point(41, 116);
+            this.l_chuyencan.Location = new System.Drawing.Point(12, 28);
             this.l_chuyencan.Name = "l_chuyencan";
-            this.l_chuyencan.Size = new System.Drawing.Size(70, 13);
-            this.l_chuyencan.TabIndex = 8;
-            this.l_chuyencan.Text = "Chuyen can :";
+            this.l_chuyencan.Size = new System.Drawing.Size(67, 13);
+            this.l_chuyencan.TabIndex = 0;
+            this.l_chuyencan.Text = "Chuyen can:";
+            // 
+            // tb_chuyencan
+            // 
+            this.tb_chuyencan.Location = new System.Drawing.Point(85, 25);
+            this.tb_chuyencan.Name = "tb_chuyencan";
+            this.tb_chuyencan.Size = new System.Drawing.Size(40, 20);
+            this.tb_chuyencan.TabIndex = 1;
             // 
             // l_giuaki
             // 
             this.l_giuaki.AutoSize = true;
-            this.l_giuaki.Location = new System.Drawing.Point(44, 165);
+            this.l_giuaki.Location = new System.Drawing.Point(155, 28);
             this.l_giuaki.Name = "l_giuaki";
-            this.l_giuaki.Size = new System.Drawing.Size(46, 13);
-            this.l_giuaki.TabIndex = 9;
-            this.l_giuaki.Text = "Giua ki :";
+            this.l_giuaki.Size = new System.Drawing.Size(43, 13);
+            this.l_giuaki.TabIndex = 2;
+            this.l_giuaki.Text = "Giua ki:";
+            // 
+            // tb_giuaki
+            // 
+            this.tb_giuaki.Location = new System.Drawing.Point(204, 25);
+            this.tb_giuaki.Name = "tb_giuaki";
+            this.tb_giuaki.Size = new System.Drawing.Size(40, 20);
+            this.tb_giuaki.TabIndex = 3;
             // 
             // l_cuoiki
             // 
             this.l_cuoiki.AutoSize = true;
-            this.l_cuoiki.Location = new System.Drawing.Point(44, 213);
+            this.l_cuoiki.Location = new System.Drawing.Point(280, 28);
             this.l_cuoiki.Name = "l_cuoiki";
-            this.l_cuoiki.Size = new System.Drawing.Size(45, 13);
-            this.l_cuoiki.TabIndex = 10;
-            this.l_cuoiki.Text = "Cuoi ki :";
+            this.l_cuoiki.Size = new System.Drawing.Size(42, 13);
+            this.l_cuoiki.TabIndex = 4;
+            this.l_cuoiki.Text = "Cuoi ki:";
             // 
             // tb_cuoiki
             // 
-            this.tb_cuoiki.Location = new System.Drawing.Point(128, 205);
+            this.tb_cuoiki.Location = new System.Drawing.Point(328, 25);
             this.tb_cuoiki.Name = "tb_cuoiki";
-            this.tb_cuoiki.Size = new System.Drawing.Size(182, 20);
-            this.tb_cuoiki.TabIndex = 11;
+            this.tb_cuoiki.Size = new System.Drawing.Size(40, 20);
+            this.tb_cuoiki.TabIndex = 5;
             // 
-            // Form2
+            // b_save
+            // 
+            this.b_save.Location = new System.Drawing.Point(308, 55);
+            this.b_save.Name = "b_save";
+            this.b_save.Size = new System.Drawing.Size(75, 33);
+            this.b_save.TabIndex = 6;
+            this.b_save.Text = "Save";
+            this.b_save.UseVisualStyleBackColor = true;
+            this.b_save.Click += new System.EventHandler(this.b_save_Click);
+            // 
+            // b_reset
+            // 
+            this.b_reset.Location = new System.Drawing.Point(227, 55);
+            this.b_reset.Name = "b_reset";
+            this.b_reset.Size = new System.Drawing.Size(75, 33);
+            this.b_reset.TabIndex = 7;
+            this.b_reset.Text = "Reset";
+            this.b_reset.UseVisualStyleBackColor = true;
+            this.b_reset.Click += new System.EventHandler(this.b_reset_Click);
+            // 
+            // l_error
+            // 
+            this.l_error.AutoSize = true;
+            this.l_error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.l_error.ForeColor = System.Drawing.Color.Red;
+            this.l_error.Location = new System.Drawing.Point(12, 71);
+            this.l_error.Name = "l_error";
+            this.l_error.Size = new System.Drawing.Size(12, 17);
+            this.l_error.TabIndex = 8;
+            this.l_error.Text = " ";
+            // 
+            // DiemGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 318);
+            this.ClientSize = new System.Drawing.Size(395, 94);
+            this.Controls.Add(this.l_error);
+            this.Controls.Add(this.b_reset);
+            this.Controls.Add(this.b_save);
             this.Controls.Add(this.tb_cuoiki);
             this.Controls.Add(this.l_cuoiki);
-            this.Controls.Add(this.l_giuaki);
-            this.Controls.Add(this.l_chuyencan);
-            this.Controls.Add(this.l_idkhoahoc);
-            this.Controls.Add(this.l_idsinhvien);
             this.Controls.Add(this.tb_giuaki);
+            this.Controls.Add(this.l_giuaki);
             this.Controls.Add(this.tb_chuyencan);
-            this.Controls.Add(this.tb_idkhoahoc);
-            this.Controls.Add(this.tb_idsinhvien);
-            this.Controls.Add(this.b_save);
-            this.Controls.Add(this.b_reset);
-            this.Name = "Form2";
+            this.Controls.Add(this.l_chuyencan);
+            this.Name = "DiemGUI";
             this.Text = "Diem";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -166,17 +141,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button b_reset;
-        private System.Windows.Forms.Button b_save;
-        private System.Windows.Forms.TextBox tb_idsinhvien;
-        private System.Windows.Forms.TextBox tb_idkhoahoc;
-        private System.Windows.Forms.TextBox tb_chuyencan;
-        private System.Windows.Forms.TextBox tb_giuaki;
-        private System.Windows.Forms.Label l_idsinhvien;
-        private System.Windows.Forms.Label l_idkhoahoc;
         private System.Windows.Forms.Label l_chuyencan;
+        private System.Windows.Forms.TextBox tb_chuyencan;
         private System.Windows.Forms.Label l_giuaki;
+        private System.Windows.Forms.TextBox tb_giuaki;
         private System.Windows.Forms.Label l_cuoiki;
         private System.Windows.Forms.TextBox tb_cuoiki;
+        private System.Windows.Forms.Button b_save;
+        private System.Windows.Forms.Button b_reset;
+        private System.Windows.Forms.Label l_error;
     }
 }

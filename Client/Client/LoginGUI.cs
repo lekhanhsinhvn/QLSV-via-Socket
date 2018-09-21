@@ -43,7 +43,8 @@ namespace Client
                     TcpClient cl = new TcpClient();
                     cl.Connect(address, PORT_NUMBER);
                     client.ClientStart(cl);
-                    if (!client.Login(int.Parse(tb_id.Text), tb_password.Text))
+                    client.id = int.Parse(tb_id.Text);
+                    if (!client.Login(client.id, tb_password.Text))
                     {
                         throw new Exception();
                     }

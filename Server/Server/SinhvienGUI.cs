@@ -14,12 +14,23 @@ namespace Server
     {
         private SQL sql = new SQL();
         private GUI gui;
+        private Sinhvien sv=null;
         public SinhvienGUI(GUI gui)
         {
             this.gui = gui;
             InitializeComponent();
         }
-
+        public SinhvienGUI(GUI gui, Sinhvien sv)
+        {
+            this.sv = sv;
+            this.gui = gui;
+            InitializeComponent();
+            tb_hoten.Text = sv.ten;
+            tb_password.Text = sv.password;
+            tb_sdt.Text = sv.sdt.ToString();
+            tb_ngaysinh.Text = sv.ngay_sinh.ToString("MM/dd/yyyy");
+            tb_diachi.Text = sv.diachi;
+        }
         private void b_save_Click(object sender, EventArgs e)
         {
             try
@@ -36,16 +47,52 @@ namespace Server
                 {
                     sex = "nu";
                 }
-                Sinhvien sv = new Sinhvien(tb_hoten.Text, tb_password.Text, sex,int.Parse(tb_sdt.Text), tb_diachi.Text, DateTime.Parse(tb_ngaysinh.Text));
-                sql.InsertSinhvien(sv);
+                if (sv==null)
+                {
+                    sv = new Sinhvien(tb_hoten.Text, tb_password.Text, sex,int.Parse(tb_sdt.Text), tb_diachi.Text, DateTime.Parse(tb_ngaysinh.Text));
+                    sql.InsertSinhvien(sv);
+                }
+                else
+                {
+                    sv.ten = tb_hoten.Text;
+                    sv.password = tb_password.Text;
+                    sv.gioi_tinh = sex;
+                    sv.sdt = int.Parse(tb_sdt.Text);
+                    sv.diachi = tb_diachi.Text;
+                    sv.ngay_sinh = DateTime.Parse(tb_ngaysinh.Text);
+                    sql.UpdateSinhvien(sv);
+                }
                 gui.updatebroad("Sinhvien");
                 this.Dispose();
             }
             catch (Exception ex)
             {
                 l_error.Text = "Error";
+                Console.WriteLine(ex.Message);
             }
             
+            
+        }
+
+        private void b_reset_Click(object sender, EventArgs e)
+        {
+            if(sv == null)
+            {
+                tb_hoten.Clear();
+                tb_password.Clear();
+                tb_sdt.Clear();
+                rb_nam.Checked = true;
+                tb_diachi.Clear();
+                tb_ngaysinh.Clear();
+            }
+            else
+            {
+                tb_hoten.Text = sv.ten;
+                tb_password.Text = sv.password;
+                tb_sdt.Text = sv.sdt.ToString();
+                tb_ngaysinh.Text = sv.ngay_sinh.ToString("MM/dd/yyyy");
+                tb_diachi.Text = sv.diachi;
+            }
             
         }
     }

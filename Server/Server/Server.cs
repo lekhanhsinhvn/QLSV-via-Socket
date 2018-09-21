@@ -28,6 +28,7 @@ namespace Server
             listener.Start();
             Console.WriteLine("Server started on " + listener.LocalEndpoint);
             Thread t = new Thread(() => Connecthanle());
+            t.IsBackground = true;
             t.Start();
             
         }

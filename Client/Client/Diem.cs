@@ -9,11 +9,7 @@ namespace Server
     [Serializable]
     public class Diem
     {
-        public int id
-        {
-            get;
-            set;
-        }
+        public int id;
         public int idsinhvien
         {
             get;

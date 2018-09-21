@@ -147,6 +147,7 @@
             this.b_reset.Tag = "";
             this.b_reset.Text = "&Reset";
             this.b_reset.UseVisualStyleBackColor = true;
+            this.b_reset.Click += new System.EventHandler(this.b_reset_Click);
             // 
             // b_save
             // 
@@ -213,7 +214,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.l_hoten);
             this.Name = "SinhvienGUI";
-            this.Text = "Them sinh vien";
+            this.Text = "Sinh vien";
             this.ResumeLayout(false);
             this.PerformLayout();
 

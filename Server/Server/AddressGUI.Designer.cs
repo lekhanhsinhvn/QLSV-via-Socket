@@ -89,16 +89,17 @@
             this.l_error.AutoSize = true;
             this.l_error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.l_error.ForeColor = System.Drawing.Color.Red;
-            this.l_error.Location = new System.Drawing.Point(12, 65);
+            this.l_error.Location = new System.Drawing.Point(13, 64);
             this.l_error.Name = "l_error";
-            this.l_error.Size = new System.Drawing.Size(0, 17);
+            this.l_error.Size = new System.Drawing.Size(12, 17);
             this.l_error.TabIndex = 8;
+            this.l_error.Text = " ";
             // 
             // AddressGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 78);
+            this.ClientSize = new System.Drawing.Size(349, 90);
             this.Controls.Add(this.l_error);
             this.Controls.Add(this.b_start);
             this.Controls.Add(this.tb_port);

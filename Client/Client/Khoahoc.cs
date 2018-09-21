@@ -55,12 +55,11 @@ namespace Server
             this.batdau_hoc = batdau_hoc;
             trang_thai = "OPEN";
         }
-        public Khoahoc(int id, string ten, List<Sinhvien> danh_sach,string trang_thai, int max_danhsach, DateTime batdau_dangky, DateTime batdau_hoc)
+        public Khoahoc(int id, string ten, List<Sinhvien> danh_sach, int max_danhsach, DateTime batdau_dangky, DateTime batdau_hoc)
         {
             this.id = id;
             this.ten = ten;
             this.danh_sach = danh_sach;
-            this.trang_thai = trang_thai;
             this.max_danhsach = max_danhsach;
             this.batdau_dangky = batdau_dangky;
             this.batdau_hoc = batdau_hoc;
